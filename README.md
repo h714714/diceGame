@@ -29,3 +29,10 @@ Start Strategy
 # Given the current GameTable and diceValue
 # compares the state value of adding diceValue to tens and ones digit side
 # and adds the diceValue to the larger side
+
+
+Analysis
+# table(1,1,1) = 57
+# for empty state, avg is (35 + 3.5) * 4 = 154
+# almost half will be out of 150 => 0, avg expectation ~ 100 * 1/2
+
