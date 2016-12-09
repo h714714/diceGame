@@ -1,0 +1,19 @@
+% script
+j = 0;
+explo = zeros(1, 33);
+nonexplo = zeros(1, 33);
+nonexploavg = zeros(1, 33);
+avg = zeros(1, 33);
+for i = 100000:100000:3300000
+    j = j+1;
+    myTable(i);
+    testNum=10000;
+    score=zeros(1, testNum);
+    for i=1:testNum
+        score(i)=diceSumGame;
+    end
+    explo(j) = sum(score==0);
+    nonexplo(j) = sum(score~=0);
+    nonexploavg = sum(score)/sum(score~=0);
+    avg(j) = mean(score);
+end

@@ -45,17 +45,16 @@ switch(strategy)
         % my strategy 
         str = load ('myTable.mat');
         if total + diceValue*10+1 > 151
-            nextPos = 1;
+            nextPos = 2;
         else
-            x = 5 - tenPosCount;
-            y = 5 - onePosCount;
-            tmp1 = str.table(x+1, y, total+ 10*diceValue+1);
-            tmp2 = str.table(x, y+1, total+ diceValue+1);
-            if tmp1 >= tmp2
+            x = tenPosCount + 1;
+            y = onePosCount + 1;
+            tmp1 = str.table(x-1, y, total+ 10*diceValue+1);
+            tmp2 = str.table(x, y-1, total+ diceValue+1);
+            if tmp1 > tmp2
                 nextPos = 1;
             else
                 nextPos = 2;
             end
-        end
-
+        end      
 end

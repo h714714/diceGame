@@ -3,57 +3,34 @@ function value = construct(x, y, sum)
 % true sum = sum - 1, since matlab index can not be 1
 
 global table
-
-
-valueOutrange = 0;
+true_sum = sum-1;
 % if is already exceed => matrix index will be out of range
-if sum-1 > 150
-    value = valueOutrange;
-    return
-    
-elseif table(x,y,sum) ~= -1
-    value = table(x,y,sum);
-elseif x==5 && y==5
-    if(sum-1 > 150) value = valueOutrange;
-    else            value = sum-1;
-    end
-elseif x==5 && y~=5
-    tmp_value = 0;
-    for i = 1:6
-        tmp_value = tmp_value + construct(x, y+1, sum+i);
-    end
-    tmp_value = tmp_value/6;
-    if tmp_value > 150
-        value = valueOutrange;
+if table(x,y,sum) == -1
+    if x==1 && y==1
+        if(true_sum > 150) table(x, y, sum) = 0;
+        else               table(x, y, sum) = true_sum; % close to 150, higher value
+        end
+   
     else
-        value = tmp_value;
-    end
-elseif x~=5 && y==5
-    tmp_value = 0;
-    for i = 1:6
-        tmp_value = tmp_value + construct(x+1, y, sum+10*i);
-    end
-    tmp_value = tmp_value/6;
-    if tmp_value > 150
-        value = valueOutrange;
-    else
-        value = tmp_value;
-    end
-else  % x != 5 && y != 5
-    tmp_value = 0;
-    for i = 1:6
-        tmp_value = tmp_value + construct(x, y+1, sum+i) +  ...
-                                construct(x+1, y, sum+10*i);
-    end
-    tmp_value = tmp_value/12;
-    if tmp_value > 150
-        value = valueOutrange;
-    else
-        value = tmp_value;
+        ex = 0;
+        for i = 1:6
+            tmp_value = 0;
+            if x ~= 1
+                tmp_value = max(tmp_value, construct(x-1, y, sum+10*i));
+            end
+            if y ~= 1
+                tmp_value = max(tmp_value, construct(x, y-1, sum+i));
+            end
+            ex = ex + tmp_value;
+        end
+        table(x, y, sum) = ex/6;
     end
 end
-table(x, y, sum) = value;
+            
+
+value = table(x, y, sum);
 end
    
+
     
        
