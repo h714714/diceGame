@@ -24,8 +24,9 @@ Science Computing diceGame
 
  case 2 : 
    GameTable remains only tens digit or only ones digit   
-   Accumulate the six values of states that fills the remained digit
-   from 1 to 6, and the value equals to the summation devided by 6  
+   Accumulate the values of six states that fills the remained digit
+   from 1 to 6  
+   The value equals to the summation devided by 6  
    For example, if only tens digit remained and the sum is 100, then the six
    corresponding states are fills 1 to 6 to the tens digit, adding 10 to 60 to
    the sum of the state. Therefore,  
@@ -33,7 +34,7 @@ Science Computing diceGame
  
  case 3 :
    Gametable remains both sides of digit    
-   From 1 to 6, filling the each number to the side causing greater state value    
+   From 1 to 6, filling the each number to the side resulting greater state value    
    the value equals to the averaged value to the six results
 
 
